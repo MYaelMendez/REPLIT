@@ -1,0 +1,17 @@
+import { readFileSync, writeFileSync, mkdirSync } from "node:fs";
+import { resolve } from "node:path";
+import { fileURLToPath } from "node:url";
+const root = resolve(fileURLToPath(new URL("..", import.meta.url)));
+const paths = ["dao/constitution.json","ae/capabilities.json","dao/qr/printer-001.json","doola/services.json"];
+const entries = paths.map(path => ({ path, data: JSON.parse(readFileSync(resolve(root,path),"utf8")) }));
+const by = Object.fromEntries(entries.map(({path,data})=>[path,data]));
+const assert = (ok,message) => { if (!ok) throw new Error(message); };
+assert(by["dao/constitution.json"].agents.inherit_authority===false,"Agents cannot inherit authority");
+assert(by["dao/constitution.json"].legal_status==="not-formed","Starter must not claim legal formation");
+assert(by["dao/qr/printer-001.json"].security.qr_is_credential===false,"QR must not grant access");
+assert(by["doola/services.json"].integration_status==="proposed-not-connected","Provider must not claim live integration");
+assert(by["doola/services.json"].attribution.guaranteed===false,"Attribution cannot be guaranteed");
+const receipt={schema:"opensourceware.witness.v0",action:"validate-manifests",result:"pass",sources:entries.map(x=>x.path),git_sha:process.env.GITHUB_SHA??null,run_id:process.env.GITHUB_RUN_ID??null};
+mkdirSync(resolve(root,"witness"),{recursive:true});
+writeFileSync(resolve(root,"witness/validation-receipt.json"),JSON.stringify(receipt,null,2)+"\n");
+console.log("Validated "+entries.length+" manifests. No external actions performed.");
