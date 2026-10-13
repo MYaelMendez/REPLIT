@@ -1,0 +1,46 @@
+{
+  "schema": "opensourceware.capabilities.v0",
+  "namespace": "Æ://",
+  "capabilities": [
+    {
+      "id": "repo.inspect",
+      "mode": "read-only",
+      "requires": [
+        "repository-read"
+      ]
+    },
+    {
+      "id": "business.plan",
+      "mode": "propose",
+      "requires": [
+        "principal-consent"
+      ]
+    },
+    {
+      "id": "dao.qr.resolve",
+      "mode": "read-only",
+      "requires": []
+    },
+    {
+      "id": "doola.catalog",
+      "mode": "discovery",
+      "requires": []
+    },
+    {
+      "id": "doola.formation.prepare",
+      "mode": "proposal-only",
+      "requires": [
+        "human-review"
+      ],
+      "live_provider_adapter": false
+    },
+    {
+      "id": "witness.record",
+      "mode": "local-artifact",
+      "requires": [
+        "workflow-identity"
+      ]
+    }
+  ],
+  "invariant": "context-may-propagate-authority-does-not"
+}
