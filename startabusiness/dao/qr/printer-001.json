@@ -1,0 +1,29 @@
+{
+  "schema": "opensourceware.qr.v0",
+  "asset_id": "printer-001",
+  "kind": "3d-printer",
+  "resolver_path": "/assets/printer-001",
+  "operations": [
+    {
+      "id": "view-status",
+      "effect": "read",
+      "policy": "authenticated-user"
+    },
+    {
+      "id": "request-maintenance",
+      "effect": "proposal",
+      "policy": "authenticated-user"
+    },
+    {
+      "id": "start-job",
+      "effect": "physical-action",
+      "policy": "human-approval-plus-safety-interlock"
+    }
+  ],
+  "security": {
+    "qr_is_credential": false,
+    "bearer_token_in_qr": false,
+    "server_authorization_required": true
+  },
+  "status": "example-not-connected"
+}

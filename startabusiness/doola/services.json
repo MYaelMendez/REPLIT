@@ -1,0 +1,51 @@
+{
+  "schema": "opensourceware.provider.v0",
+  "provider": "doola",
+  "namespace": "D://",
+  "integration_status": "proposed-not-connected",
+  "endpoints": [],
+  "attribution": {
+    "mode": "partnerstack-referral-link-pending-verification",
+    "customer_continuity": "subject-to-commercial-agreement",
+    "guaranteed": false
+  },
+  "services": [
+    {
+      "id": "formation",
+      "operations": [
+        "discover",
+        "prepare",
+        "review"
+      ],
+      "purchase_requires": "provider-checkout-and-explicit-human-approval"
+    },
+    {
+      "id": "registered-agent",
+      "operations": [
+        "discover"
+      ]
+    },
+    {
+      "id": "compliance",
+      "operations": [
+        "discover"
+      ]
+    },
+    {
+      "id": "tax",
+      "operations": [
+        "discover"
+      ]
+    },
+    {
+      "id": "bookkeeping",
+      "operations": [
+        "discover"
+      ]
+    }
+  ],
+  "notices": [
+    "No official doola API integration or endorsement is represented.",
+    "No formation, payment, or third-party action occurs from this catalog."
+  ]
+}
