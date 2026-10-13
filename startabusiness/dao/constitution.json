@@ -1,0 +1,31 @@
+{
+  "schema": "opensourceware.dao.v0",
+  "organization": "startabusiness-example",
+  "human_root": {
+    "authority": "human-principal",
+    "approval_required_for": [
+      "payment",
+      "legal_filing",
+      "external_message",
+      "production_deployment",
+      "physical_actuation",
+      "secrets_access"
+    ]
+  },
+  "agents": {
+    "default_permissions": [
+      "discover",
+      "analyze",
+      "propose"
+    ],
+    "delegation": "explicit-scoped-expiring",
+    "inherit_authority": false
+  },
+  "governance": {
+    "proposal": "pull-request-or-signed-request",
+    "approval": "verified-explicit-human-authorization",
+    "receipt": "event-plus-evidence"
+  },
+  "mode": "sandbox",
+  "legal_status": "not-formed"
+}
